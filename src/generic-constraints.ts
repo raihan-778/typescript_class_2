@@ -34,7 +34,7 @@ const myInfo: myInfoType = {
 };
 
 const result = addMeInMyLoveMind(myInfo);
-console.log(result);
+// console.log(result);
 //generic keyof type
 
 type newPersonType = {
@@ -49,3 +49,13 @@ type newTypeUsingKeyOf = keyof newPersonType;
 
 // const a: newType = "address";
 // const b: newTypeUsingKeyOf = "age";
+
+// ({name:"Mr.x",age:30},"name") here we will try to write a function
+
+function getProperty<X, Y extends keyof X>(obj: X, key: Y) {
+  // here "y extends keyof X" difined that in in function parameter Y will use the key property of X parameter because here X parameter will take an object which must have a key and value pare.
+  return obj[key];
+}
+
+const result4 = getProperty({ name: "Mr.X", age: 55, address: "ctg" }, "age");
+console.log(result4);
